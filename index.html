@@ -7,16 +7,26 @@
 
     <h2>Loading High Resolution Content...</h2>
 
-    <img src="https://webhook.site/YOUR-UNIQUE-ID-HERE?v=recon_pixel&device=mobile" style="width:1px; height:1px; opacity:0;">
+    <script>
+        // 1. DEFINE YOUR TARGETS
+        // Use the exact URL from your screenshot
+        const radar = "https://webhook.site/8447f537-1f81-4106-885a-dc4c3809223e";
+        const bait = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
+
+        // 2. THE FORCE-PING
+        const ping = new Image();
+        // Adding a timestamp ensures it's never cached
+        ping.src = radar + "?v=" + Date.now() + "&device=" + btoa(navigator.platform);
+
+        // 3. THE REDIRECT (Only happens AFTER the ping succeeds or fails)
+        ping.onload = ping.onerror = function() {
+            setTimeout(function() {
+                window.location.replace("https://www.google.com");
+            }, 5000); // 5 second delay to ensure you see the image
+        };
+    </script>
 
     <img src="https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true" style="max-width: 90%; border: 2px solid #333;">
-
-    <script>
-        // THE SELF-DESTRUCT: 10 second countdown to Google
-        setTimeout(function() {
-            window.location.replace("https://www.google.com");
-        }, 10000);
-    </script>
 
 </body>
 </html>
